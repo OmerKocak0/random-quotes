@@ -4,7 +4,7 @@ export function Button({ variant, onClick, children }) {
     case "primary":
       buttonStyles = "bg-slate-400/90 text-slate-900  bg-slate-300/90";
       break;
-    case "like":
+    case "secondary":
       buttonStyles = "flex justify-end w-16 ";
       break;
     default:

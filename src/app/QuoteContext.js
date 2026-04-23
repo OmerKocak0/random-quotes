@@ -3,7 +3,6 @@
 import { createContext, useState } from "react";
 import { addedLikeCountQuotes as initialQuotes } from "@/utils/data-formatter";
 import { getRandomNumber } from "@/utils/helper-function";
-import { QuoteList } from "./user/quotes/components/QuoteList";
 
 export const QuoteContext = createContext();
 
@@ -12,7 +11,7 @@ export const QuoteProvider = ({ children }) => {
   const [quotesList, setQuotesList] = useState(initialQuotes);
   const currentQuote = quotesList[quoteIndex];
 
-  function handleClick() {
+  function handleNextQuote() {
     let next = getRandomNumber(0, initialQuotes.length - 1);
     while (next === quoteIndex) {
       next = getRandomNumber(0, initialQuotes.length - 1);
@@ -36,7 +35,7 @@ export const QuoteProvider = ({ children }) => {
   }
   return (
     <QuoteContext.Provider
-      value={{ currentQuote, handleClick, handleLike, quotesList }}
+      value={{ currentQuote, handleNextQuote, handleLike, quotesList }}
     >
       {children}
     </QuoteContext.Provider>
