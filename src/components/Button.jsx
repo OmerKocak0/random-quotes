@@ -1,4 +1,4 @@
-export function Button({ variant, onClick, children }) {
+export function Button({ variant, onClick, children, ariaLabel }) {
   let buttonStyles = "";
   switch (variant) {
     case "primary":
