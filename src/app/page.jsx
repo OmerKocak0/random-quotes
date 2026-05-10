@@ -14,7 +14,7 @@ export default function Home() {
   const { quote, author } = currentQuote;
 
   return (
-    <main className="min-h-[calc(100vh-70px)] flex items-center justify-center bg-slate-50 dark:bg-slate-950 overflow-hidden p-4 md:p-10">
+    <main className="min-h-[calc(100vh-70px)] flex items-center justify-center bg-slate-200 overflow-hidden">
       <QuoteCard>
         <H3 element="p">{quote}</H3>
         <H6 element="span">-{author}</H6>
