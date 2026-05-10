@@ -12,17 +12,5 @@ export function H6({ element, children }) {
           {children}
         </span>
       );
-    case "likeCount":
-      return (
-        <span className="text-md font-semibold text-slate-700 dark:text-white">
-          {children}
-        </span>
-      );
-    case "nav":
-      return (
-        <span className="text-md font-semibold text-slate-700 dark:text-white">
-          {children}
-        </span>
-      );
   }
 }
