@@ -2,13 +2,13 @@ export function H6({ element, children }) {
   switch (element) {
     case "p":
       return (
-        <p className="text-md font-semibold text-slate-900 self-end">
+        <p className="text-md font-semibold text-slate-700 dark:text-white self-end">
           {children}
         </p>
       );
     case "span":
       return (
-        <span className="text-md font-semibold text-slate-900 self-end">
+        <span className="text-md font-semibold text-slate-700 dark:text-white self-end">
           {children}
         </span>
       );

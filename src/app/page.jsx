@@ -2,12 +2,10 @@
 
 import { Button } from "@/components/Button";
 import { useContext } from "react";
-
 import { H3 } from "@/components/typography/H3";
 import { H6 } from "@/components/typography/H6";
 import { QuoteCard } from "@/components/QuoteCard";
 import LikeButton from "@/components/LikeButton";
-
 import { QuoteContext } from "./QuoteContext";
 
 export default function Home() {

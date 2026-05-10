@@ -12,12 +12,17 @@ export default function LikeButton({ quoteData }) {
   const targetQuote = quoteData || currentQuote;
   return (
     <div className="flex flex-1 items-center">
-      <Button variant={"secondary"} onClick={() => handleLike(targetQuote)}>
+      <Button
+        variant={"secondary"}
+        onClick={() => handleLike(targetQuote)}
+        ariaLabel={"like button"}
+      >
         <Image
           src={targetQuote.isLiked ? redHeart.src : emptyHeart.src}
           alt={targetQuote.isliked ? "Unlike Button" : " Like Button"}
           width={24}
           height={24}
+          className={!targetQuote.isLiked ? "dark:invert" : ""}
         />
       </Button>
       <H6 element="span">{targetQuote.likeCount}</H6>
