@@ -20,7 +20,7 @@ export default function LikeButton({ quoteData }) {
           height={24}
         />
       </Button>
-      <H6 element="likeCount">{targetQuote.likeCount}</H6>
+      <H6 element="span">{targetQuote.likeCount}</H6>
     </div>
   );
 }

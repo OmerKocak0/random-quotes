@@ -7,12 +7,12 @@ export function NavBar() {
     <div className="  bg-amber-100/50 p-4  shadow-md rounded-b-2xl items-center">
       <ul className="flex gap-4 pt-2 pl-4 ">
         <li>
-          <H6 element="nav">
+          <H6 element="span">
             <Link href="/">Main Page</Link>
           </H6>
         </li>
         <li>
-          <H6 element="nav">
+          <H6 element="span">
             <Link href="/user/quotes/liked">Liked Quotes</Link>
           </H6>
         </li>

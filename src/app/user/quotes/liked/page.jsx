@@ -13,7 +13,7 @@ export default function LikedQuotes() {
       <h1 className="text-3xl font-bold">Liked Quotes</h1>
       <QuoteList
         quotes={likedQuotes}
-        emptyMessage="There is empty.It's empty here. Your liked quotes will appear here"
+        emptyMessage="There is empty. It's empty here. Your liked quotes will appear here"
       />
     </main>
   );
