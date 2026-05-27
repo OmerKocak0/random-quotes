@@ -2,12 +2,8 @@ import { H3 } from "@/components/typography/H3";
 import { H6 } from "@/components/typography/H6";
 import { QuoteCard } from "@/components/QuoteCard";
 import LikeButton from "@/components/LikeButton";
-import type { Item } from "../liked/page";
-
-interface List {
-  quotes: [];
-  emptyMessage: string;
-}
+import type { Item } from "@/types";
+import type { List } from "@/types";
 
 export function QuoteList({ quotes, emptyMessage }: List) {
   if (quotes.length === 0) {

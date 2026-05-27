@@ -3,10 +3,7 @@ import "./globals.css";
 import { QuoteProvider } from "./QuoteContext";
 import { NavBar } from "../components/NavBar";
 import { ThemeProvider } from "../components/ThemeProvider";
-
-interface Layout {
-  children: React.ReactNode;
-}
+import type { Layout } from "@/types";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

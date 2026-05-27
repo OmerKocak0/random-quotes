@@ -1,18 +1,13 @@
-import { QuoteContext } from "@/app/QuoteContext";
+import { QuoteContext, useQuoteContext } from "@/app/QuoteContext";
 import { Button } from "@/components/Button";
 import { H6 } from "@/components/typography/H6";
-import { useContext } from "react";
 import Image from "next/image";
 import redHeart from "../../public/redHeart.svg";
 import emptyHeart from "@/emptyHeart.svg";
-import type { Item } from "@/app/user/quotes/liked/page";
-
-interface LikeButtonProps {
-  quoteData?: Item;
-}
+import type { LikeButtonProps } from "@/types";
 
 export default function LikeButton({ quoteData }: LikeButtonProps) {
-  const { currentQuote, handleLike } = useContext(QuoteContext);
+  const { currentQuote, handleLike } = useQuoteContext();
 
   const targetQuote = quoteData ?? currentQuote;
   return (

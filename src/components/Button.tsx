@@ -1,10 +1,4 @@
-
-interface Button{
-  variant: "primary"|"secondary"|"tertiary" ;
-  onClick: React.MouseEventHandler<HTMLButtonElement>;
-  children: React.ReactNode;
-  ariaLabel?: string;
-}
+import type { Button } from "@/types";
 
 export function Button({ variant, onClick, children, ariaLabel }: Button) {
   let buttonStyles = "";

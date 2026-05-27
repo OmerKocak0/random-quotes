@@ -1,17 +1,11 @@
 "use client";
 
-import { useContext } from "react";
-import { QuoteContext } from "@/app/QuoteContext";
+import { useQuoteContext } from "@/app/QuoteContext";
 import { QuoteList } from "../components/QuoteList";
-
-export interface Item {
-  quote: string;
-  author: string;
-  isLiked?: boolean;
-}
+import type { Item } from "@/types";
 
 export default function LikedQuotes() {
-  const { quotesList } = useContext(QuoteContext);
+  const { quotesList } = useQuoteContext();
 
   const likedQuotes = quotesList.filter((item: Item) => item.isLiked === true);
 

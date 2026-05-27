@@ -1,4 +1,4 @@
-import type { TypographyProps } from "./H3";
+import type { TypographyProps } from "@/types";
 
 export function H6({ element, children }: TypographyProps) {
   switch (element) {

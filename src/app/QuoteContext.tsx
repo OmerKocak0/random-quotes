@@ -9,14 +9,8 @@ import {
 } from "react";
 import { addedLikeCountQuotes as initialQuotes } from "@/utils/data-formatter";
 import { getRandomNumber } from "@/utils/helper-function";
-import type { Item } from "./user/quotes/liked/page";
-
-interface QuoteContextType {
-  currentQuote: Item;
-  quotesList: Item[];
-  handleNextQuote: () => void;
-  handleLike: (quote: Item) => void;
-}
+import type { Item } from "@/types";
+import type { QuoteContextType } from "@/types";
 
 export const QuoteContext = createContext<QuoteContextType | null>(null);
 

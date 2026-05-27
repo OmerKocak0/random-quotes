@@ -1,9 +1,4 @@
-import type { ReactNode } from "react";
-
-export interface TypographyProps {
-  element: "p" | "span" | "h3";
-  children: ReactNode;
-}
+import type { TypographyProps } from "@/types";
 
 export function H3({ element, children }: TypographyProps) {
   switch (element) {
