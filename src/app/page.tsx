@@ -6,10 +6,10 @@ import { H3 } from "@/components/typography/H3";
 import { H6 } from "@/components/typography/H6";
 import { QuoteCard } from "@/components/QuoteCard";
 import LikeButton from "@/components/LikeButton";
-import { QuoteContext } from "./QuoteContext";
+import { QuoteContext, useQuoteContext } from "./QuoteContext";
 
 export default function Home() {
-  const { currentQuote, handleNextQuote } = useContext(QuoteContext);
+  const { currentQuote, handleNextQuote } = useQuoteContext();
 
   const { quote, author } = currentQuote;
 
