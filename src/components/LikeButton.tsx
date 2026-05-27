@@ -4,12 +4,17 @@ import { H6 } from "@/components/typography/H6";
 import { useContext } from "react";
 import Image from "next/image";
 import redHeart from "../../public/redHeart.svg";
-import emptyHeart from "../../public/emptyHeart.svg";
+import emptyHeart from "@/emptyHeart.svg";
+import type { Item } from "@/app/user/quotes/liked/page";
 
-export default function LikeButton({ quoteData }) {
+interface LikeButtonProps {
+  quoteData?: Item;
+}
+
+export default function LikeButton({ quoteData }: LikeButtonProps) {
   const { currentQuote, handleLike } = useContext(QuoteContext);
 
-  const targetQuote = quoteData || currentQuote;
+  const targetQuote = quoteData ?? currentQuote;
   return (
     <div className="flex flex-1 items-center">
       <Button
@@ -18,8 +23,8 @@ export default function LikeButton({ quoteData }) {
         ariaLabel={"like button"}
       >
         <Image
-          src={targetQuote.isLiked ? redHeart.src : emptyHeart.src}
-          alt={targetQuote.isliked ? "Unlike Button" : " Like Button"}
+          src={targetQuote.isLiked ? redHeart : emptyHeart}
+          alt={targetQuote.isLiked ? "Unlike Button" : "Like Button"}
           width={24}
           height={24}
           className={!targetQuote.isLiked ? "dark:invert" : ""}

@@ -21,7 +21,11 @@ export default function Home() {
 
         <LikeButton />
         <div className="mt-6 flex flex-col">
-          <Button variant={"primary"} onClick={handleNextQuote}>
+          <Button
+            variant={"primary"}
+            onClick={handleNextQuote}
+            ariaLabel="Next Quote Button"
+          >
             Next Quote
           </Button>
         </div>

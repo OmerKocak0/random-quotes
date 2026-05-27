@@ -1,4 +1,12 @@
-export function Button({ variant, onClick, children, ariaLabel }) {
+
+interface Button{
+  variant: "primary"|"secondary"|"tertiary" ;
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
+  children: React.ReactNode;
+  ariaLabel?: string;
+}
+
+export function Button({ variant, onClick, children, ariaLabel }: Button) {
   let buttonStyles = "";
   switch (variant) {
     case "primary":

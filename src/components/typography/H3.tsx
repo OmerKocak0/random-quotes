@@ -1,4 +1,11 @@
-export function H3({ element, children }) {
+import type { ReactNode } from "react";
+
+export interface TypographyProps {
+  element: "p" | "span" | "h3";
+  children: ReactNode;
+}
+
+export function H3({ element, children }: TypographyProps) {
   switch (element) {
     case "p":
       return (

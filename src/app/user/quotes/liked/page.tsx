@@ -4,9 +4,16 @@ import { useContext } from "react";
 import { QuoteContext } from "@/app/QuoteContext";
 import { QuoteList } from "../components/QuoteList";
 
+export interface Item {
+  quote: string;
+  author: string;
+  isLiked?: boolean;
+}
+
 export default function LikedQuotes() {
   const { quotesList } = useContext(QuoteContext);
-  const likedQuotes = quotesList.filter((item) => item.isLiked === true);
+
+  const likedQuotes = quotesList.filter((item: Item) => item.isLiked === true);
 
   return (
     <main className="min-h-[calc(100vh-70px)] flex flex-col items-center p-10 bg-slate-200">
