@@ -2,7 +2,7 @@ import { H3 } from "@/components/typography/H3";
 import { H6 } from "@/components/typography/H6";
 import { QuoteCard } from "@/components/QuoteCard";
 import LikeButton from "@/components/LikeButton";
-import type { Item } from "@/types";
+import type { Quotes } from "@/types";
 import type { List } from "@/types";
 
 export function QuoteList({ quotes, emptyMessage }: List) {
@@ -11,7 +11,7 @@ export function QuoteList({ quotes, emptyMessage }: List) {
   }
   return (
     <div className="flex flex-col gap-6 w-full max-w-2xl mt-6">
-      {quotes.map((item: Item) => (
+      {quotes.map((item: Quotes) => (
         <QuoteCard key={item.quote}>
           <H3 element="p">{item.quote}</H3>
           <H6 element="span">-{item.author}</H6>
