@@ -1,7 +1,6 @@
 "use client";
 
 import { Button } from "@/components/Button";
-
 import { H3 } from "@/components/typography/H3";
 import { H6 } from "@/components/typography/H6";
 import { QuoteCard } from "@/components/QuoteCard";

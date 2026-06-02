@@ -4,9 +4,7 @@ export interface BasicDataQuotes {
   quote: string;
   author: string;
 }
-export interface Quotes {
-  quote: string;
-  author: string;
+export interface Quotes extends BasicDataQuotes {
   likedBy: string[];
   likeCount: number;
 }

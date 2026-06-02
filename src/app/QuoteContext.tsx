@@ -43,16 +43,19 @@ export const QuoteProvider = ({
   }
 
   function handleLike(clickedQuote: Quotes) {
-    if (!user) return;
-    const userId = user?.sub || user?.email;
-    if (!userId) return;
+    if (!user) {
+      return;
+    }
+    const currentUserId = user.sub || user.email;
+    if (!currentUserId) return;
+
     const newQuoteList = quotesList.map((item) => {
       if (item.quote === clickedQuote.quote) {
-        const isAlreadyLiked = item.likedBy.includes(userId);
+        const isAlreadyLiked = item.likedBy.includes(currentUserId);
 
         const newLikedBy = isAlreadyLiked
-          ? item.likedBy.filter((id) => id !== userId)
-          : [...item.likedBy, user.id];
+          ? item.likedBy.filter((id) => id !== currentUserId)
+          : [...item.likedBy, currentUserId];
 
         return {
           ...item,

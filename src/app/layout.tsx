@@ -7,7 +7,7 @@ import type { Layout } from "@/types";
 
 const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-inter", // Değişken adı
+  variable: "--font-inter",
 });
 
 export const metadata = {

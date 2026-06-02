@@ -1,3 +1,4 @@
+"use client";
 import { useQuoteContext } from "@/app/QuoteContext";
 import { Button } from "@/components/Button";
 import { H6 } from "@/components/typography/H6";
@@ -5,7 +6,7 @@ import Image from "next/image";
 import redHeart from "../../public/redHeart.svg";
 import emptyHeart from "../../public/emptyHeart.svg";
 import type { LikeButtonProps } from "@/types";
-import { useUser } from "@auth0/nextjs-auth0";
+import { useUser } from "@auth0/nextjs-auth0/client";
 
 export default function LikeButton({ quoteData }: LikeButtonProps) {
   const { currentQuote, handleLike } = useQuoteContext();

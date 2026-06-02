@@ -18,7 +18,7 @@ export default function LikedQuotes() {
 
       return (
         <main className="min-h-[calc(100vh-70px)] flex flex-col items-center justify-center bg-slate-200 dark:bg-linear-to-br dark:from-slate-900 dark:to-slate-950 overflow-hidden">
-          <h1 className="text-3xl font-bold">Liked Quotes</h1>
+          <h1 className="text-3xl font-bold pt-2">Liked Quotes</h1>
           <QuoteList
             quotes={likedQuotesArray}
             emptyMessage="There is empty. It's empty here. Your liked quotes will appear here"
