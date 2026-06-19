@@ -14,6 +14,11 @@ const appRoutes = [
     url: "/user/quotes/liked",
     protectedPage: true,
   },
+  {
+    name: "Add a Quote",
+    url: "/user/quotes/add",
+    protectedPage: true,
+  },
 ];
 
 export function NavBar() {
@@ -22,7 +27,7 @@ export function NavBar() {
   if (isLoading) return null;
 
   return (
-    <nav className="flex justify-between w-full sticky p-3 top-0 z-50 bg-slate-200/70  backdrop-blur-md border-b border-slate-300/50 dark:border-slate-800 dark:bg-slate-950/70 transition-colors duration-300">
+    <nav className="flex justify-between w-full sticky p-3 top-0 z-50 bg-background/70 backdrop-blur-md border-b border-border/50 transition-colors duration-300">
       <ul className="flex gap-2 pt-2 pl-4 ">
         {appRoutes.map(({ name, url, protectedPage }) => {
           if (protectedPage && !user) return null;

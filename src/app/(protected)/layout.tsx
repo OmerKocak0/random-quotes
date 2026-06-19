@@ -18,5 +18,5 @@ export default async function ProtectedLayout({ children }: Layout) {
     return <span>An error occured</span>;
   }
 
-  return user ? <div>{children}</div> : <></>;
+  return user ? <>{children}</> : <></>;
 }
