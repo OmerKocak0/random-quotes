@@ -1,12 +1,13 @@
 "use client";
 
-import { useContext } from "react";
-import { QuoteContext } from "@/app/QuoteContext";
+import { useQuoteContext } from "@/app/QuoteContext";
 import { QuoteList } from "../components/QuoteList";
+import type { Item } from "@/types";
 
 export default function LikedQuotes() {
-  const { quotesList } = useContext(QuoteContext);
-  const likedQuotes = quotesList.filter((item) => item.isLiked === true);
+  const { quotesList } = useQuoteContext();
+
+  const likedQuotes = quotesList.filter((item: Item) => item.isLiked === true);
 
   return (
     <main className="min-h-[calc(100vh-70px)] flex flex-col items-center p-10 bg-slate-200">

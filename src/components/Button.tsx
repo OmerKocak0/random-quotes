@@ -1,4 +1,6 @@
-export function Button({ variant, onClick, children, ariaLabel }) {
+import type { Button } from "@/types";
+
+export function Button({ variant, onClick, children, ariaLabel }: Button) {
   let buttonStyles = "";
   switch (variant) {
     case "primary":

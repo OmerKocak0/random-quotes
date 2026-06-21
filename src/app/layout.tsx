@@ -1,8 +1,9 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { QuoteProvider } from "./QuoteContext";
-import { NavBar } from "@/components/NavBar";
-import { ThemeProvider } from "@/components/ThemeProvider";
+import { NavBar } from "../components/NavBar";
+import { ThemeProvider } from "../components/ThemeProvider";
+import type { Layout } from "@/types";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,7 +20,7 @@ export const metadata = {
   description: "Random Quotes Application 200825",
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children }: Layout) {
   return (
     <html
       lang="en"

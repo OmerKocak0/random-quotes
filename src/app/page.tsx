@@ -1,15 +1,15 @@
 "use client";
 
 import { Button } from "@/components/Button";
-import { useContext } from "react";
+
 import { H3 } from "@/components/typography/H3";
 import { H6 } from "@/components/typography/H6";
 import { QuoteCard } from "@/components/QuoteCard";
 import LikeButton from "@/components/LikeButton";
-import { QuoteContext } from "./QuoteContext";
+import { useQuoteContext } from "./QuoteContext";
 
 export default function Home() {
-  const { currentQuote, handleNextQuote } = useContext(QuoteContext);
+  const { currentQuote, handleNextQuote } = useQuoteContext();
 
   const { quote, author } = currentQuote;
 
@@ -21,7 +21,11 @@ export default function Home() {
 
         <LikeButton />
         <div className="mt-6 flex flex-col">
-          <Button variant={"primary"} onClick={handleNextQuote}>
+          <Button
+            variant={"primary"}
+            onClick={handleNextQuote}
+            ariaLabel="Next Quote Button"
+          >
             Next Quote
           </Button>
         </div>

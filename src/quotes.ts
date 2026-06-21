@@ -1,4 +1,10 @@
-export const quotes = [
+export interface Quotes {
+  quote: string;
+  author: string;
+  isLiked?: boolean;
+}
+
+export const quotes: Quotes[] = [
   {
     quote: "Be yourself; everyone else is already taken.",
     author: "Oscar Wilde",

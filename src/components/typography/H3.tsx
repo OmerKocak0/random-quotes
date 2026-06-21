@@ -1,4 +1,6 @@
-export function H3({ element, children }) {
+import type { TypographyProps } from "@/types";
+
+export function H3({ element, children }: TypographyProps) {
   switch (element) {
     case "p":
       return (
