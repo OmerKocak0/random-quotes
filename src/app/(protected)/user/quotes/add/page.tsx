@@ -6,11 +6,18 @@ import {
   FieldLegend,
   FieldSet,
 } from "@/components/ui/field";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { ErrorCard } from "@/components/ErrorCard";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button as Button2 } from "@/components/ui/button";
-import * as z from "zod";
 import { useActionState } from "react";
 import { addNewQuote } from "./addQuoteAction";
 import type { AddNewQuoteState } from "@/types";
@@ -33,11 +40,11 @@ export default function AddNewQuotePage() {
       action={dispatchAction}
       className="flex flex-1 justify-center items-center"
     >
-      <FieldSet className="w-full max-w-md">
+      <FieldSet className="w-full max-w-150">
         <FieldLegend className="text-center w-full text-2xl!">
           Add a Quote
         </FieldLegend>
-        <FieldGroup>
+        <FieldGroup className="pr-4">
           <Field>
             <FieldLabel htmlFor="quote" className="text-xl">
               Quote
@@ -48,13 +55,17 @@ export default function AddNewQuotePage() {
               placeholder="The Quote which you want to write"
               className="p-2"
               required
+              minLength={5}
+              maxLength={300}
               defaultValue={state?.data?.quote}
             />
           </Field>
           {state?.errors?.fieldErrors?.quote && (
             <ErrorCard>{state.errors.fieldErrors.quote[0]}</ErrorCard>
           )}
-          <Field>
+        </FieldGroup>
+        <FieldGroup className="flex flex-row">
+          <Field className=" max-w-sm">
             <FieldLabel htmlFor="author" className="text-xl">
               Author
             </FieldLabel>
@@ -64,12 +75,29 @@ export default function AddNewQuotePage() {
               type="text"
               placeholder="Quote's Author"
               required
+              minLength={2}
+              maxLength={50}
               defaultValue={state?.data?.author}
             />
           </Field>
           {state?.errors?.fieldErrors?.author && (
             <ErrorCard>{state.errors.fieldErrors.author.join(".")}</ErrorCard>
           )}
+          <div className="flex items-end">
+            <Select>
+              <SelectTrigger className="w-45">
+                <SelectValue placeholder="Category" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectGroup>
+                  <SelectItem value="motivation">Motivation</SelectItem>
+                  <SelectItem value="success">Success</SelectItem>
+                  <SelectItem value="philosophy">Philosophy</SelectItem>
+                  <SelectItem value="life">Life</SelectItem>
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+          </div>
         </FieldGroup>
         <FieldGroup className="flex flex-row">
           <Button2 type="submit">Add</Button2>

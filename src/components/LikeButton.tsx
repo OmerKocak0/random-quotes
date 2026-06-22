@@ -1,6 +1,6 @@
 "use client";
 import { useQuoteContext } from "@/app/QuoteContext";
-import { Button } from "@/components/MyButton";
+import { MyButton } from "@/components/MyButton";
 import { H6 } from "@/components/typography/H6";
 import Image from "next/image";
 import redHeart from "../../public/redHeart.svg";
@@ -18,7 +18,7 @@ export default function LikeButton({ quoteData }: LikeButtonProps) {
 
   return (
     <div className="flex flex-1 items-center">
-      <Button
+      <MyButton
         variant={"secondary"}
         onClick={() => handleLike(targetQuote)}
         ariaLabel={"like button"}
@@ -30,9 +30,9 @@ export default function LikeButton({ quoteData }: LikeButtonProps) {
           height={24}
           className={!likedByUser ? "dark:invert" : ""}
         />
-      </Button>
+      </MyButton>
       <div className="flex items-center">
-        <H6 element="span">{targetQuote.likeCount}</H6>
+        <H6 element="span">{targetQuote.likedBy.length}</H6>
       </div>
     </div>
   );

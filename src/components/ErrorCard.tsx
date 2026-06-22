@@ -1,4 +1,4 @@
-import { AlertCircle } from "lucide-react"; // İkon kullanıyorsan (shadcn genelde lucide kullanır)
+import { AlertCircle } from "lucide-react";
 
 export function ErrorCard({ children }: { children: React.ReactNode }) {
   return (

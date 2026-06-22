@@ -38,6 +38,7 @@ export async function addNewQuote(
   const rawData = {
     quote: String(formData.get("quote") ?? ""),
     author: String(formData.get("author") ?? ""),
+    category: String(formData.get("category") ?? ""),
   };
 
   const validationOutput = NewQuote.safeParse(rawData);

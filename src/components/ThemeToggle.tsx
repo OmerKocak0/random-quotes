@@ -2,7 +2,7 @@
 
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
-import { Button } from "./MyButton";
+import { MyButton } from "./MyButton";
 
 export function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();
@@ -17,7 +17,7 @@ export function ThemeToggle() {
   }
 
   return (
-    <Button
+    <MyButton
       variant={"tertiary"}
       onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
       ariaLabel={
@@ -29,6 +29,6 @@ export function ThemeToggle() {
       ) : (
         <span className="text-xl leading-none">🌙</span>
       )}
-    </Button>
+    </MyButton>
   );
 }
