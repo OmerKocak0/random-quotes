@@ -35,6 +35,7 @@ export default function Categories() {
     <section className="grid grid-cols-2 grid-rows-2 h-full w-full gap-4">
       {categories.map(({ name, url, img }) => (
         <MyButton
+          key={name}
           variant={"big-button"}
           onClick={() => router.push(url)}
           bgImage={img}

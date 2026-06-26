@@ -1,6 +1,7 @@
 import type { TypographyProps } from "@/types";
 
 export function H3({ element, children }: TypographyProps) {
+  let headerStyles = "";
   switch (element) {
     case "p":
       return (
@@ -17,7 +18,9 @@ export function H3({ element, children }: TypographyProps) {
       );
     case "h3":
       return (
-        <h3 className="text-2xl font-semibold text-slate-900 dark:text-white">
+        <h3
+          className={`text-2xl font-bold text-slate-900 dark:text-white ${headerStyles}`}
+        >
           {children}
         </h3>
       );

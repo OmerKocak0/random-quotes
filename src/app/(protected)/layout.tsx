@@ -2,6 +2,7 @@ import { auth0 } from "@/lib/auth0";
 import type { Layout } from "@/types";
 import { redirect, RedirectType } from "next/navigation";
 import { Loader2 } from "lucide-react";
+import { Toaster } from "sonner";
 export default async function ProtectedLayout({ children }: Layout) {
   const session = await auth0.getSession();
 
@@ -22,5 +23,12 @@ export default async function ProtectedLayout({ children }: Layout) {
     return redirect("/auth/login", RedirectType.replace);
   }
 
-  return user ? <>{children}</> : <></>;
+  return user ? (
+    <>
+      {children}
+      <Toaster />
+    </>
+  ) : (
+    <></>
+  );
 }
