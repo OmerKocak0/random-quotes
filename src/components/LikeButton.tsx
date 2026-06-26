@@ -1,6 +1,6 @@
 "use client";
 import { useQuoteContext } from "@/app/QuoteContext";
-import { Button } from "@/components/Button";
+import { Button } from "@/components/MyButton";
 import { H6 } from "@/components/typography/H6";
 import Image from "next/image";
 import redHeart from "../../public/redHeart.svg";

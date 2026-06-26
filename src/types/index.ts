@@ -45,3 +45,24 @@ export interface ListItemTypes {
   children: React.ReactNode;
   href: string;
 }
+
+export type AddNewQuoteState = {
+  success: boolean;
+  errors?: {
+    formErrors: string[];
+    fieldErrors: {
+      author?: string[];
+      quote?: string[];
+      [key: string]: string[] | undefined;
+    };
+  };
+  message?: string;
+  data?: {
+    author: string;
+    quote: string;
+  };
+};
+
+export interface LogoutDialogProps {
+  children: ReactNode;
+}

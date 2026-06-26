@@ -1,6 +1,6 @@
 import { H3 } from "@/components/typography/H3";
 import { H6 } from "@/components/typography/H6";
-import { QuoteCard } from "@/components/QuoteCard";
+import { QuoteCard } from "@/app/(protected)/user/quotes/_components/QuoteCard";
 import LikeButton from "@/components/LikeButton";
 import type { Quotes } from "@/types";
 import type { List } from "@/types";

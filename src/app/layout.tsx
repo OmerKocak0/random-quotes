@@ -21,10 +21,12 @@ export default function RootLayout({ children }: Layout) {
       lang="en"
       className={`${inter.variable} font-sans h-full antialiased `}
     >
-      <body className="min-h-full flex flex-col ">
+      <body className="min-h-full flex flex-col">
         <ThemeProvider>
           <NavBar />
-          <QuoteProvider>{children}</QuoteProvider>
+          <QuoteProvider>
+            <main className="flex flex-1 flex-col">{children}</main>
+          </QuoteProvider>
         </ThemeProvider>
       </body>
     </html>

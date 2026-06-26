@@ -7,8 +7,8 @@ import {
   type ReactNode,
   type ReactElement,
 } from "react";
-import { addedLikeCountQuotes as initialQuotes } from "@/utils/data-formatter";
-import { getRandomNumber } from "@/utils/helper-function";
+import { addedLikeCountQuotes as initialQuotes } from "@/helperFunctions/data-formatter";
+import { getRandomNumber } from "@/helperFunctions/math-random";
 import type { Quotes } from "@/types";
 import type { QuoteContextType } from "@/types";
 import { useUser } from "@auth0/nextjs-auth0/client";

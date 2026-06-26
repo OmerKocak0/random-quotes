@@ -1,9 +1,10 @@
 "use client";
 
 import { useQuoteContext } from "@/app/QuoteContext";
-import { QuoteList } from "../components/QuoteList";
+import { QuoteCard } from "@/app/(protected)/user/quotes/_components/QuoteCard";
+import { QuoteList } from "@/app/(protected)/user/quotes/_components/QuoteList";
 import type { Quotes } from "@/types";
-import { useUser } from "@auth0/nextjs-auth0";
+import { useUser } from "@auth0/nextjs-auth0/client";
 
 export default function LikedQuotes() {
   const { quotesList } = useQuoteContext();
@@ -17,8 +18,8 @@ export default function LikedQuotes() {
       );
 
       return (
-        <main className="min-h-[calc(100vh-70px)] flex flex-col items-center justify-center bg-slate-200 dark:bg-linear-to-br dark:from-slate-900 dark:to-slate-950 overflow-hidden">
-          <h1 className="text-3xl font-bold pt-2">Liked Quotes</h1>
+        <main className="flex-1 flex flex-col items-center justify-center overflow-hidden">
+          <h1 className="text-3xl font-bold p-4">Liked Quotes</h1>
           <QuoteList
             quotes={likedQuotesArray}
             emptyMessage="There is empty. It's empty here. Your liked quotes will appear here"
@@ -26,5 +27,11 @@ export default function LikedQuotes() {
         </main>
       );
     }
+  } else {
+    return (
+      <QuoteCard>
+        <p>Please Log In first</p>
+      </QuoteCard>
+    );
   }
 }
