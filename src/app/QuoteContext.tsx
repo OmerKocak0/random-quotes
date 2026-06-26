@@ -9,8 +9,9 @@ import {
 } from "react";
 import { addedLikeCountQuotes as initialQuotes } from "@/utils/data-formatter";
 import { getRandomNumber } from "@/utils/helper-function";
-import type { Item } from "@/types";
+import type { Quotes } from "@/types";
 import type { QuoteContextType } from "@/types";
+import { useUser } from "@auth0/nextjs-auth0/client";
 
 export const QuoteContext = createContext<QuoteContextType | null>(null);
 
@@ -32,7 +33,7 @@ export const QuoteProvider = ({
   /* I use '!' operator because currentQuote which in QuoteContext.Provider is giving error and Typescript can't be sure that currentQuote's length more than 0. 
    I make it sure that this array always have 1 element at least */
   const currentQuote = quotesList[quoteIndex] ?? quotesList[0]!;
-
+  const { user } = useUser();
   function handleNextQuote() {
     let next = getRandomNumber(0, quotesList.length - 1);
     while (next === quoteIndex) {
@@ -41,13 +42,25 @@ export const QuoteProvider = ({
     setQuoteIndex(next);
   }
 
-  function handleLike(clickedQuote: Item) {
+  function handleLike(clickedQuote: Quotes) {
+    if (!user) {
+      return;
+    }
+    const currentUserId = user.sub || user.email;
+    if (!currentUserId) return;
+
     const newQuoteList = quotesList.map((item) => {
       if (item.quote === clickedQuote.quote) {
+        const isAlreadyLiked = item.likedBy.includes(currentUserId);
+
+        const newLikedBy = isAlreadyLiked
+          ? item.likedBy.filter((id) => id !== currentUserId)
+          : [...item.likedBy, currentUserId];
+
         return {
           ...item,
-          isLiked: !item.isLiked,
-          likeCount: item.isLiked ? item.likeCount - 1 : item.likeCount + 1,
+          likedBy: newLikedBy,
+          likeCount: newLikedBy.length,
         };
       }
       return item;
@@ -55,6 +68,7 @@ export const QuoteProvider = ({
 
     setQuotesList(newQuoteList);
   }
+
   return (
     <QuoteContext.Provider
       value={{ currentQuote, handleNextQuote, handleLike, quotesList }}

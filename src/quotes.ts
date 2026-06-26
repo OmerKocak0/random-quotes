@@ -1,10 +1,6 @@
-export interface Quotes {
-  quote: string;
-  author: string;
-  isLiked?: boolean;
-}
+import type { BasicDataQuotes } from "@/types/index";
 
-export const quotes: Quotes[] = [
+export const quotes: BasicDataQuotes[] = [
   {
     quote: "Be yourself; everyone else is already taken.",
     author: "Oscar Wilde",

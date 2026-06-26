@@ -4,7 +4,8 @@ export function Button({ variant, onClick, children, ariaLabel }: Button) {
   let buttonStyles = "";
   switch (variant) {
     case "primary":
-      buttonStyles = "bg-slate-400/90 text-slate-900  bg-slate-300/90";
+      buttonStyles =
+        "bg-slate-400/90 text-slate-900  bg-slate-300/90 dark:bg-slate-50 dark:text-slate-900 dark:hover:bg-slate-200";
       break;
     case "secondary":
       buttonStyles = "flex justify-end w-16 ";

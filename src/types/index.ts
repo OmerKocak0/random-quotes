@@ -1,18 +1,20 @@
 import type { ReactNode } from "react";
 
-export interface Item {
+export interface BasicDataQuotes {
   quote: string;
   author: string;
-  isLiked?: boolean;
+}
+export interface Quotes extends BasicDataQuotes {
+  likedBy: string[];
   likeCount: number;
 }
 
 export interface LikeButtonProps {
-  quoteData?: Item;
+  quoteData?: Quotes;
 }
 
 export interface List {
-  quotes: Item[];
+  quotes: Quotes[];
   emptyMessage: string;
 }
 
@@ -21,10 +23,10 @@ export interface Layout {
 }
 
 export interface QuoteContextType {
-  currentQuote: Item;
-  quotesList: Item[];
+  currentQuote: Quotes;
+  quotesList: Quotes[];
   handleNextQuote: () => void;
-  handleLike: (quote: Item) => void;
+  handleLike: (quote: Quotes) => void;
 }
 
 export interface TypographyProps {
@@ -37,4 +39,9 @@ export interface Button {
   onClick: React.MouseEventHandler<HTMLButtonElement>;
   children: React.ReactNode;
   ariaLabel?: string;
+}
+
+export interface ListItemTypes {
+  children: React.ReactNode;
+  href: string;
 }

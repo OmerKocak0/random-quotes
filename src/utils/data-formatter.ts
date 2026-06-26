@@ -4,7 +4,7 @@ export const addedLikeCountQuotes = quotes.map((oldProps) => {
   return {
     ...oldProps,
     likeCount: 0,
-    isLiked: false,
+    likedBy: [] as string[],
   };
 });
 
