@@ -4,6 +4,7 @@ import { QuoteProvider } from "./QuoteContext";
 import { NavBar } from "../components/NavBar";
 import { ThemeProvider } from "../components/ThemeProvider";
 import type { Layout } from "@/types";
+import { Toaster } from "sonner";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -20,12 +21,14 @@ export default function RootLayout({ children }: Layout) {
     <html
       lang="en"
       className={`${inter.variable} font-sans h-full antialiased `}
+      suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col">
         <ThemeProvider>
           <NavBar />
           <QuoteProvider>
-            <main className="flex flex-1 flex-col">{children}</main>
+            <main className="flex flex-1 flex-col p-4">{children}</main>
+            <Toaster position="top-center" />
           </QuoteProvider>
         </ThemeProvider>
       </body>

@@ -19,6 +19,11 @@ const appRoutes = [
     url: "/user/quotes/add",
     protectedPage: true,
   },
+  {
+    name: "Categories",
+    url: "/categories",
+    protectedPage: false,
+  },
 ];
 
 export function NavBar() {

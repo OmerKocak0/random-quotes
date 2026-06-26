@@ -12,7 +12,7 @@ import { getRandomNumber } from "@/helperFunctions/math-random";
 import type { Quotes } from "@/types";
 import type { QuoteContextType } from "@/types";
 import { useUser } from "@auth0/nextjs-auth0/client";
-
+import { LogInAlert } from "@/components/LogInAlert";
 export const QuoteContext = createContext<QuoteContextType | null>(null);
 
 export function useQuoteContext() {
@@ -29,10 +29,10 @@ export const QuoteProvider = ({
 }): ReactElement => {
   const [quoteIndex, setQuoteIndex] = useState(0);
   const [quotesList, setQuotesList] = useState(initialQuotes);
-
-  /* I use '!' operator because currentQuote which in QuoteContext.Provider is giving error and Typescript can't be sure that currentQuote's length more than 0. 
-   I make it sure that this array always have 1 element at least */
-  const currentQuote = quotesList[quoteIndex] ?? quotesList[0]!;
+  const currentQuote = quotesList[quoteIndex] ?? quotesList[0];
+  if (!currentQuote) {
+    throw new Error("QuoteProvider requires at least one quote");
+  }
   const { user } = useUser();
   function handleNextQuote() {
     let next = getRandomNumber(0, quotesList.length - 1);
@@ -41,9 +41,10 @@ export const QuoteProvider = ({
     }
     setQuoteIndex(next);
   }
-
+  const [isLoginAlertOpen, setIsLoginAlertOpen] = useState(false);
   function handleLike(clickedQuote: Quotes) {
     if (!user) {
+      setIsLoginAlertOpen(true);
       return;
     }
     const currentUserId = user.sub || user.email;
@@ -71,9 +72,17 @@ export const QuoteProvider = ({
 
   return (
     <QuoteContext.Provider
-      value={{ currentQuote, handleNextQuote, handleLike, quotesList }}
+      value={{
+        currentQuote,
+        handleNextQuote,
+        handleLike,
+        quotesList,
+        isLoginAlertOpen,
+        setIsLoginAlertOpen,
+      }}
     >
       {children}
+      {<LogInAlert />}
     </QuoteContext.Provider>
   );
 };
