@@ -23,12 +23,5 @@ export default async function ProtectedLayout({ children }: Layout) {
     return redirect("/auth/login", RedirectType.replace);
   }
 
-  return user ? (
-    <>
-      {children}
-      <Toaster />
-    </>
-  ) : (
-    <></>
-  );
+  return user ? <>{children}</> : <></>;
 }
