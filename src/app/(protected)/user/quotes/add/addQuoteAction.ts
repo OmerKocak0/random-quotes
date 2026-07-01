@@ -2,33 +2,18 @@
 
 import { auth0 } from "@/lib/auth0";
 import type { AddNewQuoteState } from "@/types";
+import { NewQuoteSchema } from "@/types";
 import z from "zod";
+import { Collections, getDb } from "@/lib/db";
 
-const NewQuote = z.object({
-  author: z
-    .string()
-    .trim()
-    .min(2, { message: "Author name must be 2 character at least." })
-    .max(50, {
-      message:
-        "Maximum character limit is 300 for author name. Try write shorter if could write.",
-    }),
-
-  quote: z
-    .string()
-    .trim()
-    .min(5, { message: "Quotes must be 5 character at least." })
-    .max(300, {
-      message: "Maximum character limit is 300 for quotes. Try another one",
-    }),
-});
 export async function addNewQuote(
   _currentState: AddNewQuoteState,
   formData: FormData,
 ): Promise<AddNewQuoteState> {
   const session = await auth0.getSession();
+  const user = session?.user;
 
-  if (!session) {
+  if (!session || !user) {
     return {
       success: false,
       message: "You must log in before add quote.",
@@ -38,9 +23,10 @@ export async function addNewQuote(
   const rawData = {
     quote: String(formData.get("quote") ?? ""),
     author: String(formData.get("author") ?? ""),
+    category: String(formData.get("category") ?? ""),
   };
 
-  const validationOutput = NewQuote.safeParse(rawData);
+  const validationOutput = NewQuoteSchema.safeParse(rawData);
 
   if (!validationOutput.success) {
     const validationErrors = z.flattenError(validationOutput.error); // z.treeify is the new one but it causes errors.
@@ -51,6 +37,21 @@ export async function addNewQuote(
       data: rawData,
     };
   } else {
-    return { success: true }; //It will be change.
+    const db = await getDb();
+    const col = db.collection(Collections.quotes);
+    const now = new Date();
+
+    const newQuote = {
+      quote: validationOutput.data.quote,
+      author: validationOutput.data.author,
+      category: validationOutput.data.category,
+      approvedByAdmin: false,
+      createdBy: user.sub,
+      createdAt: now,
+      updatedAt: now,
+    };
+    await col.insertOne(newQuote);
+
+    return { success: true };
   }
 }

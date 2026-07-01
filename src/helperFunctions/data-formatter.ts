@@ -1,4 +1,4 @@
-import { quotes } from "@/quotes";
+import { quotes } from "../../quotes";
 
 export const addedLikeCountQuotes = quotes.map((oldProps) => {
   return {
