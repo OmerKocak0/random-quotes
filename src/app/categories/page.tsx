@@ -39,6 +39,7 @@ export default function Categories() {
           variant={"big-button"}
           onClick={() => router.push(url)}
           bgImage={img}
+          ariaLabel={`Category ${name}`}
         >
           {name}
         </MyButton>

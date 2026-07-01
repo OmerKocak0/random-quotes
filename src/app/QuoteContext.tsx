@@ -42,6 +42,7 @@ export const QuoteProvider = ({
     setQuoteIndex(next);
   }
   const [isLoginAlertOpen, setIsLoginAlertOpen] = useState(false);
+
   function handleLike(clickedQuote: Quotes) {
     if (!user) {
       setIsLoginAlertOpen(true);
